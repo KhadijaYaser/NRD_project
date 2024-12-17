@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"id":{"$numberInt":"1"}},"name":"__primary_key__","unique":true}],"uuid":"65847cb170ea44efbaea1faa9a1611f9","collectionName":"academyStart_category","type":"collection"}

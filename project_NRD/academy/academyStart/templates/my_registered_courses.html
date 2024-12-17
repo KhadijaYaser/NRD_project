@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}My Registered Courses{% endblock %}
+
+{% block content %}
+    <h3>My Registered Courses</h3>
+
+    {% if registered_courses %}
+        <ul>
+            {% for registration in registered_courses %}
+                <li>
+                    <strong><a href="{% url 'course_details' registration.course.pk %}">{{ registration.course.title }}</a></strong> <br>
+                    Tutor: {{ registration.course.tutor }}<br>
+                    Period: {{ registration.course.period }} weeks<br>
+                    Status: {{ registration.course.status }}
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have not registered for any courses yet.</p>
+    {% endif %}
+
+    <a href="{% url 'courses_list' %}" class="btn btn-secondary">Back to Courses List</a>
+{% endblock %}

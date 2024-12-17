@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Course: {{ course.title }}{% endblock %}
+
+{% block content %}
+    <h3>{{ course.title }}</h3>
+    <p><strong>Tutor:</strong> {{ course.tutor }}</p>
+    <p><strong>Status:</strong> {{ course.status }}</p>
+    <p><strong>Period:</strong> {{ course.period }}</p>
+    <p><strong>Total Students:</strong> {{ course.total_students }}</p>
+    <p><strong>Description:</strong> {{ course.description }}</p>
+
+    {% if user.is_authenticated %} 
+        {% if is_registered %} 
+            <p>You are already registered for this course.</p> 
+            <form method="post" action="{% url 'withdraw_from_course' course.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Withdraw from Course</button>
+            </form>
+        {% elif can_register %} 
+            <form method="post"> 
+                {% csrf_token %} 
+                <button type="submit" class="btn btn-primary">Register</button> 
+            </form> 
+        {% else %} 
+            <p>This course is not open for registration.</p> 
+        {% endif %} 
+    {% else %} <p>You need to <a href="{% url 'login' %}">log in</a> to register for this course.</p> 
+    {% endif %}
+        </br>
+    <a href="{% url 'courses_list' %}" class="btn btn-secondary">BACK</a>
+{% endblock %}
+
+
