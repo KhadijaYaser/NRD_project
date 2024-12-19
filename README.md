@@ -15,7 +15,7 @@ to run this project you have to follow these steps:
 -python manage.py makemigrations
 -python manage.py migrate
 -import the database
--connect the code to the database in sittings.py file
+-connect the code to the database in the settings.py file
 -pip install djongo
 -python manage.py makemigrations
 -python manage.py migrate
